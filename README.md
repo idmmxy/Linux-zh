@@ -1,15 +1,30 @@
-# 你好，世界！
+# Linux 项目简介
 
-- 希望这里有新手关于林尼克斯的一切
+*我们希望这里能有 **一切** 关于Linux的知识*
 
-> 「你好，世界！」通常是码工学习一门新的计算机语言的时第一个显示在屏幕上的结果。
+[![](https://img.shields.io/badge/chat-telegram-green.svg?logo=telegram)](https://t.me/joinchat/B5W13REomRfHphVkXodmrw)
+[![](https://img.shields.io/badge/language-english-blue.svg)](https://github.com/HDsky/Linux)
+[![](https://img.shields.io/badge/gitbook-website-orange.svg)](https://hdsky.gitbooks.io/linux/content/)
 
-_**这一部分将要讲述的是什么是「林尼克斯」和「壳」。**_
+## 摘要
 
-什么是 _**林尼克斯**_ 呢？它是一种为成千上万开发者创建的开源操作系统。我相信你频繁使用的系统是「视窗」。不要害怕，林尼克斯使用起来并不复杂。我们通常使用林尼克斯中最著名的版本是「乌班图」，他基于「蝶变」。
+* [项目简介]()
+* [基本交互方式 - 命令行交互](command.md)
+* [文本编辑器](text-editor.md)
+* [安装方式](install.md)
 
-首先，你需要知道的是桌面并不是林尼克斯的一切。即使乌班图有着一个非常友好的桌面，但是更多的工作需要在壳中完成。所以，不依赖桌面然后开始学习壳并通过它更方便的控制你的乌班图。
+## 项目计划
 
-## 林尼克斯文件系统
+| TO DO     | TO DO |
+| :---      | :---  |
+| -         | - |
+| -         | - |
+| -         | - |
+| -         | - |
 
-在林尼克斯中，所有的文件和文件夹都被组织在一个文件系统中，它就好像一个树根。这个文件系统开始于顶部的根目录。这个根目录挂载了所有的文件和文件夹，它非常重要。
+
+## 开源许可
+
+![by-nc-sa](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)
+
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en).
