@@ -15,6 +15,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 ## 在Microsoft Store中安装Linux系统
 
 打开微软应用商城 *(Microsoft Store)* 搜索Ubuntu
+
 ![](/assets/SearchLinux.png)
 
 ![](/assets/InstallLinux.png)

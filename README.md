@@ -6,12 +6,13 @@
 [![](https://img.shields.io/badge/language-english-blue.svg)](https://github.com/HDsky/Linux)
 [![](https://img.shields.io/badge/gitbook-website-orange.svg)](https://hdsky.gitbooks.io/linux/content/)
 
-## 摘要
+## 总览
 
 * [项目简介]()
+* [安装方式](install.md)
+* [你好Linux](hello_world.md)
 * [基本交互方式 - 命令行交互](command.md)
 * [文本编辑器](text-editor.md)
-* [安装方式](install.md)
 
 ## 项目计划
 

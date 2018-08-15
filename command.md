@@ -17,7 +17,9 @@
 | :---  | :---              | :---      |
 | cd    | change directory  | 改变当前 *shell* 的工作目录 |
 | mkdir | make directory    | 新建一个目录文件 |
-| cat   | concatenate       | 连接一个文件，并将其标打印至**标准输出** *(stdout)* |
+| pushd | push directories  | 选择一个目录文件切换为当前**工作目录**，并将先前的目录压入目录栈。如果操作后缺少参数，则自动**切换** <font size=2 color=#90EE90>*(rotates)*</font> 目录栈顶端的两个目录 |
+| popd  | pop directories   | 推出目录栈中顶端的目录作为工作目录，原来栈中的该目录将删除 |
+| cat   | concatenate       | 连接一个文件，并将其标打印至**标准输出** <font size=2 color=#90EE90>*(stdout)*</font> |
 | mv    | move              | 移动一个文件 |
 | rm    | remove            | 删除一个文件 |
 | ls    | list              | 列出某个目录下面的文件 |
