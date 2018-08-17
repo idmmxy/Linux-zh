@@ -36,106 +36,93 @@
 
 ### 如何使用SSH登录Linux?
 
-Firstly, Run the next command to sure the ssh server is installed in your Linux.
+首先，运行下面的命令以确保SSH服务器已经被安装在Linux中 *('$'不用打)* 。
 
-`sudo apt-get install openssh-server`
+`$sudo apt-get install openssh-server`
 
-And if we want to log into a server through _**ssh**_, we should have an **account**, **password** and server's **ip** or **domain name**.
+如果我们想要通过 _**ssh**_登录一个服务器，我们就需要知道一个**用户账户**，一个**用户密码**以及一个服务器的**IP地址**或**域名**。
 
-```
-ssh [username]@hostname [command]
-```
+`$ssh [username]@hostname [command]`
 
-Without the username, the default username is the account of your personal Linux computer.
+如果没有设置用户名，那么默认用户名就是你私人Linux电脑的账户名。
 
-If this is the first time you use _ssh_ to connect to this remote machine, you will see a message as below:
+如果这是你第一次使用 _ssh_ 去连接远程机器，你将会看见下面的信息。
 
 ```bash
 The authenticity of host '[SERVER NAME]' cannot be established.DSA key fingerprint is 04:48:84:31:b0:z0:5a:9b:01:9d:b3:a7:47:e2:b1:0c.Are you sure you want to continue connecting (yes/no)?
 ```
+输入 ``yes`` 继续，这将让这个服务器加入你已知的主机列表中 _(被储存在`~/.ssh/known_hosts`中)_ 。如下面所呈现的信息<font color=#A00E0E><缺少呈现信息></font>所示，我们将不能再次输入`yes`在我们下次登录Linux的时候。
 
-Type ``yes`` to continue. This will add the server to your list of known hosts (Stored in `~/.ssh/known_hosts`) as seen in the following message. So we cannot type 'yes' again when we log into **Linux** next time.
+至于为什么我们得到的信息和最开始的会不一样，你可以从[这篇博客](https://www.ssh.com/attack/man-in-the-middle)中找到精简的回答，这是因为中间人攻击。
 
-For why we get message like before, you can get answer from [this blog](https://www.ssh.com/attack/man-in-the-middle) Simply speaking, it's because man-in-the-middle attack. 
+在你第一次得到了密钥时，使用如下命令进入`~/.ssh/`文件夹：
 
-After you get the key for the first time, move it to `~/.ssh/` directory with:
+`$mv /path/to/key ~/.ssh`
 
-```
-mv /path/to/key ~/.ssh
-```
+然后使用下面的命令改变这个密钥的权限至600,_至于更多关于权限控制的知识，可以参看这篇[博客](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions)_：
 
-And then change the permissions of the **key** to 600 with command below:
+`$chmod 600 ~/.ssh/key`
 
-```
-chmod 600 ~/.ssh/key
-```
+当我们将先前做的一切都安排妥当了，我们就可以使用这个钥匙登录我们的服务器了：
 
-For more knowledge about permission control, please refer to [blog](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions). 
+`$ssh -i ~/.ssh/key [USERNAME]@[SERVER ADRESS]`
 
-When we have done all of this before, we can log into the server with **key**:
+事实上，我们通常并不使用这样的方式登录Linux，需要用密钥登录的电脑是为了确保电脑的安全。
 
-```
-ssh -i ~/.ssh/key [USERNAME]@[SERVER ADRESS]
-```
+除了SSH中最基础的知识外， _scp_ 的用法：一种基于SSH上的文件传输工具，它对我们一样的重要。下一个章节将谈一谈这个命令。
 
-In fact, we don't need to use key to log into **Linux**, the one need to log with key is make sure the safe computer.
+### 使用SSH在其他Linux上显示出GUI
 
-Besides this basic knowledge about _ssh_, the usage of _scp_: a tool for file transfer based on _ssh_ is important for us too. The next chapter will talk about this commad.
+`$ssh -X [USERNAME]@[SERVER ADDRESS]`
 
-### Use ssh show GUI on other Linux
+然后你就可以在终端上运行类似于`gedit`这样有用户交互界面的程序了。用户界面会呈现在你的屏幕上。
 
-```
-ssh -X [USERNAME]@[SERVER ADDRESS]
-```
-And you can run the GUI program in terminal like `gedit`. The GUI will show on your screen.
+### 使用SSH在Windows上登录Linux
 
-### Use SSH login your Linux on Windows
+> 也许你并不知道如何将SSH安装至最新的Windows 10系统，你可以在 `powershell` 或者 `cmd`中使用它,并且如果你使用其他Windows系统，你可以安装[Xshell](https://www.netsarang.com/products/xsh_overview.html)，或者其他SSH客户端在你的系统上。
 
-> Maybe you don't know about that the SSH had installed in lasted Windows 10, you can use it in `powershell` or `cmd`.And if your Windows system is other version，you can install [Xshell](https://www.netsarang.com/products/xsh_overview.html) or other ssh client in your system.
+当你想要在你自己的电脑上登录时，终端仿真器<font size=2 color=#90EE90>(Terminal Emulator)</font>可以帮助你，接下来，我们将使用 _**Xshell**_作为一个例子。
 
-Terminal Emulator can do a favor when we need to access on your PCs. Here, we take _**Xshell**_ as an example.
+#### 如何使用Xshell
 
-#### How to use Xshell:
-The operation in Xshell is almost the same as that in the shell of linux system. The only difference is that a new window will pop up in Xshell, where the account password has to be input.
+Xshell的操作和Linux系统上的Shell几乎是一样的，唯一的不同是Xshell将新推出一个窗口，那个窗口将需要输入账户密码。
 
-If you want get your username be remembered in Xshell or don't enter the password to login your Linux system. Just follow the step to setup your Xshell.
+如果你希望你的Xshell能记住你的用户名，或者不想要输入密码去登录你的Linux，只需要在Xshell中跟着下面的步骤：
 
-**Step 1** 
+**步骤 1** 
 
-Click the button to add a new configfile.
+点击按钮新建一个配置文件。
 
-**Step 2**
+**步骤 2**
 
-Set the config to suitable for your Linux.
+设置配置以对应上你的Linux。
 
-If your don't know your computer IP address please use the `ifconfig` command in your Linux to show the IP address.
+如果你不知道你电脑的IP，请使用`ifconfig`命令在你的Linux上显示出IP地址。
 
-**Step 3**
+**步骤 3**
 
-If you have a Private key to login your Linux just change the method.
+如果你有一个私钥去登录你的Linux，只需要变更模式即可。
 
-**Step 4**
+**步骤 4**
 
-Click the OK button to save the config file, and connect it.
+点击 OK 按钮去保存你的配置文件，然后继续。
 
-The Xshell will recheck the key,you should reviewer the message.
+Xshell将会再次检查你的密码，然后将反馈一些信息。
 
-After all, you will use SSH login in your Linux. 
+然后，你将可以使用SSH登录你的Linux了。
 
-### Use SSH Show GUI on Windows
+### 使用SSH在Windows上显示GUI
 
-You can use Xmanager to show GUI on your Windows.
+你可以使用Xmanager在你的Windows上显示GUI。下载[Xmanager](https://www.netsarang.com/products/xmg_overview.html)
 
-download [Xmanager](https://www.netsarang.com/products/xmg_overview.html)
+**拓展**
 
-**Expand**
+如果你想要，你还可以在你的Windows10上安装**WSL**<font size=2 color=#90EE90>(Linux Windows子系统，Windows Subsystem for Linux)</font>，WSL将提供一个在Windows上的Linux虚拟环境。
 
-If you want, you also could install WSL(Windows Subsystem for Linux) on your Windows 10. WSL will give a Linux virtual environment on Windows 10.
+这里是一片关于它的[官方文档](https://docs.microsoft.com/en-us/windows/wsl/install-win10)。
 
-Here is a official doc about it: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+## 如何使用Linux命令翻译文件
 
-## How to transfer file to other Linux use command
+### SCP简介
 
-### An Introduction of SCP
-
-_**scp**_ is a tool for transfer files between server and local computer through *ssh* protcol. It's a very useful tool for linux user. Well, for windows user, you can use [Xshell](https://www.netsarang.com/products/xsh_overview.html) and [Xftp](https://www.netsarang.com/products/xfp_overview.html) instead.
+_**scp**_ 是一个在服务器和本地电脑之间通过SSH协议传输文件的工具，它是一个Linux上非常有用的工具，当然，对于Windows用户来说，你可以使用 [Xshell](https://www.netsarang.com/products/xsh_overview.html) 或者 [Xftp](https://www.netsarang.com/products/xfp_overview.html) 来替代。
